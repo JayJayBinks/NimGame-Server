@@ -43,22 +43,22 @@ public class GameConfigurationFactory {
         }
 
         GameConfiguration alteredVerifiedConfig = createGameConfiguration(nimGameMode);
-        String aiDifficulty = gameConfiguration.getAiDifficulty();
+        AIDifficulty aiDifficulty = gameConfiguration.getAiDifficulty();
         if (aiDifficulty != null) {
             alteredVerifiedConfig.setAiDifficulty(aiDifficulty);
         }
-        alteredVerifiedConfig.setGameMode(nimGameMode.toString());
+        alteredVerifiedConfig.setGameMode(nimGameMode);
         return alteredVerifiedConfig;
     }
 
     private GameConfiguration createMisereConfiguration() {
         GameConfiguration gameConfiguration = new GameConfiguration();
-        gameConfiguration.setGameMode(MISERE.toString());
-        gameConfiguration.setAiDifficulty(AIDifficulty.DUMB.toString());
+        gameConfiguration.setGameMode(MISERE);
+        gameConfiguration.setAiDifficulty(AIDifficulty.DUMB);
         gameConfiguration.setMaxMatchesToTake(projectProperties.getMisereMaxMatchesToTake());
         gameConfiguration.setMinMatchesToTake(projectProperties.getMisereMinMatchesToTake());
         gameConfiguration.setNumberOfMatches(projectProperties.getMisereNumberOfMatches());
-        gameConfiguration.setPlayerFirstMove(Player.HUMAN.toString());
+        gameConfiguration.setPlayerFirstMove(Player.HUMAN);
         return gameConfiguration;
     }
 }

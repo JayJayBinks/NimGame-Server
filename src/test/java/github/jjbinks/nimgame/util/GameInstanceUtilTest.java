@@ -132,12 +132,12 @@ public class GameInstanceUtilTest {
 
     private GameConfiguration getGameConfiguration() {
         GameConfiguration gameConfiguration = new GameConfiguration();
-        gameConfiguration.setAiDifficulty(AIDifficulty.DUMB.toString());
-        gameConfiguration.setGameMode(NimGameMode.MISERE.toString());
+        gameConfiguration.setAiDifficulty(AIDifficulty.DUMB);
+        gameConfiguration.setGameMode(NimGameMode.MISERE);
         gameConfiguration.setMaxMatchesToTake(3);
         gameConfiguration.setMinMatchesToTake(1);
         gameConfiguration.setNumberOfMatches(13);
-        gameConfiguration.setPlayerFirstMove(Player.HUMAN.toString());
+        gameConfiguration.setPlayerFirstMove(Player.HUMAN);
         return gameConfiguration;
     }
 }

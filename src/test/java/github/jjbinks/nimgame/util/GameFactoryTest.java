@@ -35,9 +35,9 @@ public class GameFactoryTest {
         when(gameConfiguration.getMinMatchesToTake()).thenReturn(MIN_MATCHES_TO_TAKE);
         when(gameConfiguration.getMaxMatchesToTake()).thenReturn(MAX_MATCHES_TO_TAKE);
         when(gameConfiguration.getNumberOfMatches()).thenReturn(NUMBER_OF_MATCHES);
-        when(gameConfiguration.getGameMode()).thenReturn(NimGameMode.MISERE.toString());
-        when(gameConfiguration.getPlayerFirstMove()).thenReturn(FIRST_TURN_PLAYER.toString());
-        when(gameConfiguration.getAiDifficulty()).thenReturn(AI_DIFFICUTLY.toString());
+        when(gameConfiguration.getGameMode()).thenReturn(NimGameMode.MISERE);
+        when(gameConfiguration.getPlayerFirstMove()).thenReturn(FIRST_TURN_PLAYER);
+        when(gameConfiguration.getAiDifficulty()).thenReturn(AI_DIFFICUTLY);
     }
 
     @Test
@@ -51,12 +51,12 @@ public class GameFactoryTest {
         assert (nimGameInstance.getInstanceId() != null);
         GameConfiguration gameConfiguration = nimGameInstance.getGameConfiguration();
         assert (gameConfiguration != null);
-        assert (gameConfiguration.getGameMode().equals(NimGameMode.MISERE.toString()));
+        assert (gameConfiguration.getGameMode().equals(NimGameMode.MISERE));
         assert (gameConfiguration.getNumberOfMatches() == NUMBER_OF_MATCHES);
         assert (gameConfiguration.getMaxMatchesToTake() == MAX_MATCHES_TO_TAKE);
         assert (gameConfiguration.getMinMatchesToTake() == MIN_MATCHES_TO_TAKE);
         assert gameConfiguration.getAiDifficulty().equals(AI_DIFFICUTLY);
-        assert (gameConfiguration.getPlayerFirstMove().equals(FIRST_TURN_PLAYER.toString()));
+        assert (gameConfiguration.getPlayerFirstMove().equals(FIRST_TURN_PLAYER));
         assert nimGameInstance.getGameProperties().getMatchesRemaining() == NUMBER_OF_MATCHES;
         assert nimGameInstance.getGameProperties().getPlayerOnMove().equals(FIRST_TURN_PLAYER);
     }

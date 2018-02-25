@@ -27,13 +27,13 @@ public class GameStorageImpl implements GameStorage {
 
     @Override
     public void store(NimGameInstance nimGameInstance) {
-        gameList.get(NimGameMode.fromValue(nimGameInstance.getGameConfiguration().getGameMode()))
+        gameList.get(nimGameInstance.getGameConfiguration().getGameMode())
                 .put(nimGameInstance.getInstanceId(), nimGameInstance);
     }
 
     @Override
     public void remove(NimGameInstance nimGameInstance) {
-        gameList.get(NimGameMode.fromValue(nimGameInstance.getGameConfiguration().getGameMode()))
+        gameList.get(nimGameInstance.getGameConfiguration().getGameMode())
                 .remove(nimGameInstance.getInstanceId());
     }
 

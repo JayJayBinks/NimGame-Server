@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+//TODO write tests
 public class NimGameApiController implements NimGameApi {
     public static final Logger LOGGER = LoggerFactory.getLogger(NimGameApiController.class);
 
@@ -101,11 +102,11 @@ public class NimGameApiController implements NimGameApi {
         LOGGER.debug("Updating game instace " + gameInstance + " " + gamePatchRequest);
         gameInstanceUtil.patch(gameInstance, gamePatchRequest);
         LOGGER.debug("Patched succesfully " + gameInstance + " " + gamePatchRequest);
-        String aiDifficulty = gameInstance.getGameConfiguration().getAiDifficulty();
+        AIDifficulty aiDifficulty = gameInstance.getGameConfiguration().getAiDifficulty();
         if (aiDifficulty != null &&
                 gameInstance.getGameEndedProperties() == null) {
             LOGGER.debug("Making AI Move " + aiDifficulty + " " + gameInstance);
-            AI.delayedMove(aiController.getAI(NimGameMode.fromValue(gameModeId), AIDifficulty.fromValue(aiDifficulty)), gameInstance);
+            AI.delayedMove(aiController.getAI(NimGameMode.fromValue(gameModeId), aiDifficulty), gameInstance);
         }
         return new ResponseEntity<>(gameInstance, HttpStatus.OK);
     }

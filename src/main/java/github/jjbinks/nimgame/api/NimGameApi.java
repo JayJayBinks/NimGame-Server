@@ -37,7 +37,7 @@ public interface NimGameApi {
     @ApiOperation(value = "Deletes the instance for instance_id with given game_mode_id.", notes = "Deleting can atm only be done for a finished game.", response = Void.class, tags = {"Game Modes",})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Deleted successfully.", response = Void.class),
-            @ApiResponse(code = 404, message = "", response = ApiException.class)})
+            @ApiResponse(code = 404, message = "Game mode or instance could not be found.", response = ApiException.class)})
 
     @RequestMapping(value = "/game_modes/{game_mode_id}/instances/{instance_id}",
             method = RequestMethod.DELETE)
@@ -57,8 +57,8 @@ public interface NimGameApi {
 
     @ApiOperation(value = "Get the game instance.", notes = "", response = NimGameInstance.class, tags = {"Game Modes",})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "", response = NimGameInstance.class),
-            @ApiResponse(code = 404, message = "", response = ApiException.class)})
+            @ApiResponse(code = 200, message = "successful operation", response = NimGameInstance.class),
+            @ApiResponse(code = 404, message = "Game mode could not be found.", response = ApiException.class)})
 
     @RequestMapping(value = "/game_modes/{game_mode_id}/instances/{instance_id}",
             produces = {"application/json"},
@@ -70,7 +70,7 @@ public interface NimGameApi {
     @ApiOperation(value = "Get a list of all instances of a game.", notes = "", response = NimGameInstance.class, responseContainer = "List", tags = {"Game Modes",})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "successful operation", response = NimGameInstance.class, responseContainer = "List"),
-            @ApiResponse(code = 404, message = "", response = ApiException.class)})
+            @ApiResponse(code = 404, message = "Game mode could not be found.", response = ApiException.class)})
 
     @RequestMapping(value = "/game_modes/{game_mode_id}/instances",
             produces = {"application/json"},

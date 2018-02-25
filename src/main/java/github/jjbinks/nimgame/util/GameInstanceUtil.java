@@ -5,7 +5,6 @@ import github.jjbinks.nimgame.api.exceptions.BadRequestException;
 import github.jjbinks.nimgame.model.GameEndedProperties;
 import github.jjbinks.nimgame.model.GameProperties;
 import github.jjbinks.nimgame.model.NimGameInstance;
-import github.jjbinks.nimgame.model.NimGameMode;
 
 public class GameInstanceUtil {
 
@@ -15,7 +14,7 @@ public class GameInstanceUtil {
     }
 
     private void validatePatch(NimGameInstance instanceToUpdate, NimGameInstance gameUpdateRequest) throws ApiException {
-        switch (NimGameMode.fromValue(instanceToUpdate.getGameConfiguration().getGameMode())) {
+        switch (instanceToUpdate.getGameConfiguration().getGameMode()) {
             case MISERE:
                 validateMiserePatch(instanceToUpdate, gameUpdateRequest);
                 break;
@@ -23,7 +22,7 @@ public class GameInstanceUtil {
     }
 
     private void patchGameProperties(NimGameInstance instanceToUpdate, GameProperties newGameProperties) {
-        switch (NimGameMode.fromValue(instanceToUpdate.getGameConfiguration().getGameMode())) {
+        switch (instanceToUpdate.getGameConfiguration().getGameMode()) {
             case MISERE:
                 patchGamePropertiesMisere(instanceToUpdate, newGameProperties);
                 break;
