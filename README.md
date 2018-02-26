@@ -16,6 +16,6 @@ mvnw spring-boot:run
 Or compile the application and run the jar.
 
 You can view the api documentation in swagger-ui by pointing to  
-http://localhost:8080/swagger-ui.html
+http://localhost:8080/nim_game/api/v1/swagger-ui.html
 
 Change default port value in application.properties
