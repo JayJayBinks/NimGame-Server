@@ -6,6 +6,8 @@ import github.jjbinks.nimgame.model.AIDifficulty;
 import github.jjbinks.nimgame.model.NimGameMode;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static github.jjbinks.nimgame.api.exceptions.NotFoundException.AI_NOT_FOUND;
+
 public class AIController {
 
     @Autowired
@@ -31,7 +33,7 @@ public class AIController {
             case SMART:
                 return smartMisereAi;
             default:
-                throw new NotFoundException("Ai could not be found: " + aiDifficulty);
+                throw new NotFoundException(AI_NOT_FOUND, "Ai could not be found: " + aiDifficulty);
         }
     }
 }

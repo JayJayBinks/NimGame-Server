@@ -57,8 +57,8 @@ public class GameConfigurationFactoryTest {
         assert gameConfiguration.getMinMatchesToTake() == misereMinMatchesToTake;
         assert gameConfiguration.getMaxMatchesToTake() == misereMaxMatchesToTake;
         assert gameConfiguration.getNumberOfMatches() == misereNumberOfMatches;
-        assert gameConfiguration.getAiDifficulty().equals(AIDifficulty.DUMB.toString());
-        assert gameConfiguration.getGameMode().equals(NimGameMode.MISERE.toString());
+        assert gameConfiguration.getAiDifficulty().equals(AIDifficulty.DUMB);
+        assert gameConfiguration.getGameMode().equals(NimGameMode.MISERE);
     }
 
 
@@ -66,44 +66,44 @@ public class GameConfigurationFactoryTest {
     public void verifyGameConfigurationMisereDumb() throws GameModeNotFoundException, BadRequestException {
         //given
         gameConfiguration = new GameConfiguration();
-        gameConfiguration.setAiDifficulty(AIDifficulty.DUMB.toString());
+        gameConfiguration.setAiDifficulty(AIDifficulty.DUMB);
         //when
         GameConfiguration verifiedGameConfiguration = gameConfigurationFactory.verifyAlternateConfig(NimGameMode.MISERE, gameConfiguration);
         //then
         assert (verifiedGameConfiguration.getGameMode() != null);
         assert (verifiedGameConfiguration.getMaxMatchesToTake() != null);
         assert (verifiedGameConfiguration.getNumberOfMatches()) != null;
-        assert (verifiedGameConfiguration.getGameMode()).equals(NimGameMode.MISERE.toString());
-        assert (verifiedGameConfiguration.getAiDifficulty()).equals(AIDifficulty.DUMB.toString());
+        assert (verifiedGameConfiguration.getGameMode()).equals(NimGameMode.MISERE);
+        assert (verifiedGameConfiguration.getAiDifficulty()).equals(AIDifficulty.DUMB);
     }
 
     @Test
     public void verifyGameConfigurationMisereSmart() throws GameModeNotFoundException, BadRequestException {
         //given
         gameConfiguration = new GameConfiguration();
-        gameConfiguration.setAiDifficulty(AIDifficulty.SMART.toString());
+        gameConfiguration.setAiDifficulty(AIDifficulty.SMART);
         //when
         GameConfiguration verifiedGameConfiguration = gameConfigurationFactory.verifyAlternateConfig(NimGameMode.MISERE, gameConfiguration);
         //then
         assert (verifiedGameConfiguration.getGameMode() != null);
         assert (verifiedGameConfiguration.getMaxMatchesToTake() != null);
         assert (verifiedGameConfiguration.getNumberOfMatches()) != null;
-        assert (verifiedGameConfiguration.getGameMode()).equals(NimGameMode.MISERE.toString());
-        assert (verifiedGameConfiguration.getAiDifficulty()).equals(AIDifficulty.SMART.toString());
+        assert (verifiedGameConfiguration.getGameMode()).equals(NimGameMode.MISERE);
+        assert (verifiedGameConfiguration.getAiDifficulty()).equals(AIDifficulty.SMART);
     }
 
     @Test
     public void verifyGameConfigurationMisere() throws GameModeNotFoundException, BadRequestException {
         //given
         gameConfiguration = new GameConfiguration();
-        gameConfiguration.setGameMode(NimGameMode.MISERE.toString());
+        gameConfiguration.setGameMode(NimGameMode.MISERE);
         //when
         GameConfiguration verifiedGameConfiguration = gameConfigurationFactory.verifyAlternateConfig(NimGameMode.MISERE, gameConfiguration);
         //then
         assert (verifiedGameConfiguration.getGameMode() != null);
         assert (verifiedGameConfiguration.getMaxMatchesToTake() != null);
         assert (verifiedGameConfiguration.getNumberOfMatches()) != null;
-        assert (verifiedGameConfiguration.getGameMode()).equals(NimGameMode.MISERE.toString());
+        assert (verifiedGameConfiguration.getGameMode()).equals(NimGameMode.MISERE);
         assert (verifiedGameConfiguration.getAiDifficulty() != null);
     }
 }

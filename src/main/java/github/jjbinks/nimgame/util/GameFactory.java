@@ -12,7 +12,7 @@ import static github.jjbinks.nimgame.model.NimGameMode.MISERE;
 public class GameFactory {
 
     public NimGameInstance createNewGame(GameConfiguration gameConfiguration) throws GameModeNotFoundException {
-        NimGameMode nimGameMode = NimGameMode.fromValue(gameConfiguration.getGameMode());
+        NimGameMode nimGameMode = gameConfiguration.getGameMode();
         switch (nimGameMode) {
             case MISERE:
                 return createMisereGame(gameConfiguration);
@@ -21,12 +21,12 @@ public class GameFactory {
         }
     }
 
-    private NimGameInstance createMisereGame(GameConfiguration gameConfiguration) {
+    private NimGameInstance createMisereGame(GameConfiguration gameConfiguration) throws GameModeNotFoundException {
         NimGameInstance nimGameInstance = new NimGameInstance();
         nimGameInstance.setInstanceId(GameIdUtil.generateNewGameId(MISERE));
         nimGameInstance.setGameProperties(new GameProperties.Builder()
                 .withMatchesRemaining(gameConfiguration.getNumberOfMatches())
-                .withPlayerOnMove(Player.fromValue(gameConfiguration.getPlayerFirstMove()))
+                .withPlayerOnMove(gameConfiguration.getPlayerFirstMove())
                 .build());
         nimGameInstance.setGameConfiguration(gameConfiguration);
         return nimGameInstance;

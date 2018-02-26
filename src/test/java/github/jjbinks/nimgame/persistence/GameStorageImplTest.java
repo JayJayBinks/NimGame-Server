@@ -35,7 +35,7 @@ public class GameStorageImplTest {
 
     @Before
     public void setup() {
-        when(gameConfiguration.getGameMode()).thenReturn(NimGameMode.MISERE.toString());
+        when(gameConfiguration.getGameMode()).thenReturn(NimGameMode.MISERE);
 
         when(nimGameInstanceOne.getInstanceId()).thenReturn(INSTANCE_ID_ONE);
         when(nimGameInstanceOne.getGameConfiguration()).thenReturn(gameConfiguration);

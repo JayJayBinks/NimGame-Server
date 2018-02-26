@@ -7,10 +7,10 @@ import java.util.Objects;
 public class GameConfiguration {
 
     @JsonProperty("aiDifficulty")
-    private String aiDifficulty;
+    private AIDifficulty aiDifficulty;
 
     @JsonProperty("gameMode")
-    private String gameMode;
+    private NimGameMode gameMode;
 
     @JsonProperty("numberOfMatches")
     private Integer numberOfMatches;
@@ -22,21 +22,21 @@ public class GameConfiguration {
     private Integer maxMatchesToTake;
 
     @JsonProperty("playerFirstMove")
-    private String playerFirstMove;
+    private Player playerFirstMove;
 
-    public String getAiDifficulty() {
+    public AIDifficulty getAiDifficulty() {
         return aiDifficulty;
     }
 
-    public void setAiDifficulty(String aiDifficulty) {
+    public void setAiDifficulty(AIDifficulty aiDifficulty) {
         this.aiDifficulty = aiDifficulty;
     }
 
-    public String getGameMode() {
+    public NimGameMode getGameMode() {
         return gameMode;
     }
 
-    public void setGameMode(String gameMode) {
+    public void setGameMode(NimGameMode gameMode) {
         this.gameMode = gameMode;
     }
 
@@ -64,11 +64,11 @@ public class GameConfiguration {
         this.maxMatchesToTake = maxMatchesToTake;
     }
 
-    public String getPlayerFirstMove() {
+    public Player getPlayerFirstMove() {
         return playerFirstMove;
     }
 
-    public void setPlayerFirstMove(String playerFirstMove) {
+    public void setPlayerFirstMove(Player playerFirstMove) {
         this.playerFirstMove = playerFirstMove;
     }
 
