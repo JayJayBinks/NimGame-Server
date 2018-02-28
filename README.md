@@ -1,3 +1,4 @@
+
 # Nim Game
 
 
@@ -19,3 +20,62 @@ You can view the api documentation in swagger-ui by pointing to
 http://localhost:8080/nim_game/api/v1/swagger-ui.html
 
 Change default port value in application.properties
+
+## Example Game Play (For demo purpose)
+Starting a new game:
+You can define the Game Configuration (which only supports AI difficulty at the moment):
+
+POST /game_modes/misere/instances
+
+    {
+      "aiDifficulty": "smart"
+    }
+
+This will create a new game with an Smart AI and an game instance id.
+
+    {
+      "instanceId": 1,
+      "gameProperties": {
+        "matchesRemaining": 13,
+        "playerOnMove": "human"
+      },
+      "gameEndedProperties": null,
+      "gameConfiguration": {
+        "aiDifficulty": "smart",
+        "gameMode": "misere",
+        "numberOfMatches": 13,
+        "minMatchesToTake": 1,
+        "maxMatchesToTake": 3,
+        "playerFirstMove": "human"
+      }
+    }
+
+The instanceId can be used to make a move on the game:
+
+PATCH /game_modes/misere/instances/1
+
+    {
+      "gameProperties": {
+        "matchesRemaining": 10
+      }
+    }
+
+The AI will make a subsequent move which is delayed and shown when the game is retrieved.
+
+    {
+      "instanceId": 1,
+      "gameProperties": {
+        "matchesRemaining": 9,
+        "playerOnMove": "human"
+      },
+      "gameEndedProperties": null,
+      "gameConfiguration": {
+        "aiDifficulty": "smart",
+        "gameMode": "misere",
+        "numberOfMatches": 13,
+        "minMatchesToTake": 1,
+        "maxMatchesToTake": 3,
+        "playerFirstMove": "human"
+      }
+    }
+The PATCH and GET requests can be repeated until the matchesRemaining field reaches 0, which ends the game.
