@@ -1,5 +1,6 @@
 package github.jjbinks.nimgame.util;
 
+import github.jjbinks.nimgame.api.exceptions.GameModeNotFoundException;
 import github.jjbinks.nimgame.model.NimGameMode;
 
 public class GameIdUtil {
@@ -9,12 +10,12 @@ public class GameIdUtil {
         //not the be instantiated
     }
 
-    public static Long generateNewGameId(NimGameMode nimGameMode) {
+    public static Long generateNewGameId(NimGameMode nimGameMode) throws GameModeNotFoundException {
         switch (nimGameMode) {
             case MISERE:
                 return misereGameCounter++;
             default:
-                throw new IllegalArgumentException("No Id could be generated for " + nimGameMode);
+                throw new GameModeNotFoundException(nimGameMode);
         }
     }
 }

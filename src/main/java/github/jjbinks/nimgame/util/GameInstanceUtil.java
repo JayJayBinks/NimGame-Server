@@ -6,7 +6,12 @@ import github.jjbinks.nimgame.model.GameEndedProperties;
 import github.jjbinks.nimgame.model.GameProperties;
 import github.jjbinks.nimgame.model.NimGameInstance;
 
+import static github.jjbinks.nimgame.model.NimGameMode.MISERE;
+
+import static github.jjbinks.nimgame.api.exceptions.ApiException.GAME_ALREADY_ENDED;
+
 public class GameInstanceUtil {
+
 
     public void patch(NimGameInstance instanceToUpdate, NimGameInstance gamePatchRequest) throws ApiException {
         validatePatch(instanceToUpdate, gamePatchRequest);
@@ -32,13 +37,13 @@ public class GameInstanceUtil {
 
     private void validateMiserePatch(NimGameInstance instanceToUpdate, NimGameInstance gameUpdateRequest) throws BadRequestException {
         if (instanceToUpdate.getGameEndedProperties() != null) {
-            throw new BadRequestException("BAD_REQUEST_006", "The game has ended and can not be altered anymore");
+            throw new BadRequestException(GAME_ALREADY_ENDED, "The game has ended and can not be altered anymore");
         }
 
         int matchesDiff = instanceToUpdate.getGameProperties().getMatchesRemaining() - gameUpdateRequest.getGameProperties().getMatchesRemaining();
         if (matchesDiff > instanceToUpdate.getGameConfiguration().getMaxMatchesToTake()
                 || matchesDiff < instanceToUpdate.getGameConfiguration().getMinMatchesToTake()) {
-            throw new BadRequestException("BAD_REQUEST_004", "Illegal removal of matches : " + matchesDiff);
+            throw new BadRequestException(ApiException.ILLEGAL_GAME_MOVE, "Illegal removal of matches : " + matchesDiff);
         }
     }
 

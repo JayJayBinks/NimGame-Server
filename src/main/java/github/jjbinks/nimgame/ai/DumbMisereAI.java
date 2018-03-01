@@ -15,8 +15,10 @@ public class DumbMisereAI extends MisereAI {
     protected int getNumberOfMatchesToRemove(NimGameInstance nimGameInstance) {
         GameConfiguration gameConfiguration = nimGameInstance.getGameConfiguration();
         GameProperties gameProperties = nimGameInstance.getGameProperties();
+
         int max = gameProperties.getMatchesRemaining() < gameConfiguration.getMaxMatchesToTake()
                 ? gameConfiguration.getMinMatchesToTake() : gameConfiguration.getMaxMatchesToTake();
+
         int range = (max - gameConfiguration.getMinMatchesToTake()) + 1;
         return (int) (Math.random() * range) + gameConfiguration.getMinMatchesToTake();
     }

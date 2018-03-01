@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-//TODO write tests
+//TODO write Spring Boot Tests (how many as they are expensive?)
 public class NimGameApiController implements NimGameApi {
     public static final Logger LOGGER = LoggerFactory.getLogger(NimGameApiController.class);
 

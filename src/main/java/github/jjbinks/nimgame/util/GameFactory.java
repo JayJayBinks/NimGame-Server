@@ -20,7 +20,7 @@ public class GameFactory {
         }
     }
 
-    private NimGameInstance createMisereGame(GameConfiguration gameConfiguration) {
+    private NimGameInstance createMisereGame(GameConfiguration gameConfiguration) throws GameModeNotFoundException {
         NimGameInstance nimGameInstance = new NimGameInstance();
         nimGameInstance.setInstanceId(GameIdUtil.generateNewGameId(MISERE));
         nimGameInstance.setGameProperties(new GameProperties.Builder()

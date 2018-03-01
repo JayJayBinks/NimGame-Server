@@ -8,6 +8,8 @@ import github.jjbinks.nimgame.model.NimGameMode;
 import java.util.HashMap;
 import java.util.Map;
 
+import static github.jjbinks.nimgame.api.exceptions.NotFoundException.GAME_NOT_FOUND;
+
 public class GameStorageImpl implements GameStorage {
     private Map<NimGameMode, Map<Long, NimGameInstance>> gameList = new HashMap<>();
 
@@ -20,7 +22,7 @@ public class GameStorageImpl implements GameStorage {
     public NimGameInstance find(NimGameMode gameModeId, Long instanceId) throws NotFoundException {
         NimGameInstance nimGameInstance = gameList.get(gameModeId).get(instanceId);
         if (nimGameInstance == null) {
-            throw new NotFoundException(String.format("Game with id %d can not be found.", instanceId));
+            throw new NotFoundException(GAME_NOT_FOUND, String.format("Game with id %d can not be found.", instanceId));
         }
         return nimGameInstance;
     }
