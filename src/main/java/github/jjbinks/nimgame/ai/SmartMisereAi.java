@@ -20,8 +20,13 @@ public class SmartMisereAi extends MisereAI {
         return matchesToRemove;
     }
 
-    private int calculateWinningStrategy(int numberOfMatches)
-    {
+    /**
+     * (4 and each multiple of it +1) is the number when the computer is in a loosing position, anything below is a winning position
+     * The strategy is to bring the player in this loosing position (13, 9 , 5, 1)
+     * THis takes advantage of integer division resulting in the right number for taking away for numbers below each multiple of 4+1
+     * Ideally it should be GameConfig:MaxNumberToTake+1
+     */
+    private int calculateWinningStrategy(int numberOfMatches) {
         return ((numberOfMatches - 1) / 4) * 4 + 1;
     }
 }
